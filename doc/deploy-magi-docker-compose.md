@@ -15,7 +15,7 @@ The instructions have been tested on servers with a debian 8 or debian 9 OS.
 If you want to be able to run docker commands without using sudo, you can add your user to the docker group. Log out and log back in for the change to take effect. 
 	```console
 	$ sudo usermod -aG docker $USER
-	```
+	```  
 2. Install docker compose
 	```console
 	$ sudo magi/scripts/install-docker-compose.sh
