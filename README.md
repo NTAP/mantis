@@ -7,6 +7,10 @@ Storage Java SDK to communicate with Amazon AWS, Microsoft Azure or NetApp Stora
 One specific use case for NetApp StorageGrid customers is to use this software
 to replicate or migrate objects between a StorageGrid system and Microsoft Azure or Amazon S3.
 
+We also provide docker images and a docker compose file, to help you quickly 
+bring up a Spark cluster running on top of docker containers, 
+with magi installed. To check out details, please refer to instructions in [deploy-magi-docker-compose.md](doc/deploy-magi-docker-compose.md).
+
 ## Functions Implemented ##
 * Bucket synchronization  
 	Replicate or migrate objects between two buckets in AWS, Azure or NetApp StorageGrid  
