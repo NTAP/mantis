@@ -26,7 +26,7 @@ The instructions have been tested on servers with a Debian 8.3 OS.
 
 5. Attach to the master container and add S3/Azure credentials in file /w/spark/conf/spark-defaults.conf
 
-	$ sudo docker exec -it master bash
+	$ sudo docker exec -it master bash  
 	root@master:/# vim /w/spark/conf/spark-defaults.conf
 
 Fill in spark.cloud.account/spark.cloud.secretkey, if you want to create/list/delete objects. If you want to copy objects between two object stores, fill in spark.sb.origin.account/ spark.sb.origin.secretkey/ spark.sb.dest.account/ spark.sb.dest.secretkey. If you are not using AWS S3, change the cloud to others and set other properties according to instructions in README.
