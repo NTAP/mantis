@@ -2,7 +2,7 @@
 
 This manual shows how to deploy magi, using Docker compose. We have created a Docker image with magi installed and we will use that image, to create a Spark cluster with 4 Docker containers, one running Spark master and the other three running Spark workers. 
 
-The instructions have been tested on servers with a Debian 8.3 OS. 
+The instructions have been tested on servers with a debian 8 or debian 9 OS. 
 
 0. git clone magi
 
