@@ -16,13 +16,23 @@ The instructions have been tested on servers with a Debian 8.3 OS.
 
 	$ sudo magi/scripts/install-docker-compose.sh
 
-3. Add S3/Azure credentials at the spark master node
+3. Bring up the Docker containers
 
-	$ docker exec -it master bash
-	$ vim /w/spark/conf/spark-defaults.conf
+	$ sudo docker-compose -f magi/scripts/docker-compose.yml up -d
 
-4. Submit a job from the Spark master container
+4. List running containers
 
-	$ /w/spark/bin/spark-submit --master spark://master:7077 --class ListBucket /w/magi_2.11-1.2.jar --bucket atg-sync --prefix hex --summary
+	$ sudo docker ps 
+
+5. Attach to the master container and add S3/Azure credentials in file /w/spark/conf/spark-defaults.conf
+
+	$ sudo docker exec -it master bash
+	root@master:/# vim /w/spark/conf/spark-defaults.conf
+
+Fill in spark.cloud.account/spark.cloud.secretkey, if you want to create/list/delete objects. If you want to copy objects between two object stores, fill in spark.sb.origin.account/spark.sb.origin.secretkey/spark.sb.dest.account/spark.sb.dest.secretkey. If you are not using AWS S3, change the cloud to others and set other properties according to instructions in README.
+
+6. Submit a job from the Spark master container
+
+	root@master:/# /w/spark/bin/spark-submit --master spark://master:7077 --class ListBucket /w/magi_2.11-1.2.jar --bucket atg-sync --prefix hex --summary
 
 
