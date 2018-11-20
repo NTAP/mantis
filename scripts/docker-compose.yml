@@ -1,0 +1,48 @@
+version: '3'
+services:
+  master:
+        image: xinglin110/magi:v2
+        container_name: master
+        hostname: master
+        ports: 
+        - "38000-38010:38000-38010"
+        - "8080:8080"
+        - "7077:7077"
+        command: /w/spark/bin/spark-class org.apache.spark.deploy.master.Master -h master
+
+  worker1:
+        image: xinglin110/magi:v2
+        container_name: worker1
+        hostname: worker1
+        ports: 
+        - "48001:48001"
+        - "8081:8081"
+        depends_on:
+        - master
+        environment:
+        - "SPARK_MASTER=spark://master:7077"
+        command: /w/spark/bin/spark-class org.apache.spark.deploy.worker.Worker   spark://master:7077 -p 48001 --webui-port 8081
+  worker2:
+        image: xinglin110/magi:v2
+        container_name: worker2
+        hostname: worker2
+        ports: 
+        - "48002:48002"
+        - "8082:8082"
+        depends_on:
+        - master
+        environment:
+        - "SPARK_MASTER=spark://master:7077"
+        command: /w/spark/bin/spark-class org.apache.spark.deploy.worker.Worker   spark://master:7077 -p 48002 --webui-port 8082
+  worker3:
+        image: xinglin110/magi:v2
+        container_name: worker3
+        hostname: worker3
+        ports: 
+        - "48003:48003"
+        - "8083:8083"
+        depends_on:
+        - master
+        environment:
+        - "SPARK_MASTER=spark://master:7077"
+        command: /w/spark/bin/spark-class org.apache.spark.deploy.worker.Worker   spark://master:7077 -p 48003 --webui-port 8083
