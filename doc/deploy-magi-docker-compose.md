@@ -5,9 +5,9 @@ This manual shows how to deploy magi, using Docker compose. We have created a Do
 The instructions have been tested on servers with a debian 8 or debian 9 OS. 
 
 0. git clone magi
-
+	```console
 	$ git clone https://github.com/NTAP/magi.git
-
+	```
 1. Install Docker CE 
 
 	$ sudo magi/scripts/install-docker-ce.sh
