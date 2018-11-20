@@ -4,20 +4,24 @@ This manual shows how to deploy magi, using Docker compose. We have created a Do
 
 The instructions have been tested on servers with a Debian 8.3 OS. 
 
+0. git clone magi
+
+	$ git clone https://github.com/NTAP/magi.git
+
 1. Install Docker CE 
 
-	$ ./scripts/install-docker-ce.sh
+	$ sudo magi/scripts/install-docker-ce.sh
 
 2. Install docker compose
 
-	$ ./scripts/install-docker-compose.sh
+	$ sudo magi/scripts/install-docker-compose.sh
 
 3. Add S3/Azure credentials at the spark master node
 
 	$ docker exec -it master bash
 	$ vim /w/spark/conf/spark-defaults.conf
 
-4. Submit a job
+4. Submit a job from the Spark master container
 
 	$ /w/spark/bin/spark-submit --master spark://master:7077 --class ListBucket /w/magi_2.11-1.2.jar --bucket atg-sync --prefix hex --summary
 
