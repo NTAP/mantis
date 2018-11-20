@@ -35,4 +35,9 @@ Fill in spark.cloud.account/spark.cloud.secretkey, if you want to create/list/de
 
 	root@master:/# /w/spark/bin/spark-submit --master spark://master:7077 --class ListBucket /w/magi_2.11-1.2.jar --bucket atg-sync --prefix hex --summary
 
+Run `exit' to exit from the master container
+
+7. Terminate docker containers
+
+	$ cd magi/scripts/; sudo docker-compose down
 
