@@ -16,6 +16,7 @@ If you want to be able to run docker commands without using sudo, you can add yo
 	```console
 	$ sudo usermod -aG docker $USER
 	```  
+
 2. Install docker compose
 	```console
 	$ sudo magi/scripts/install-docker-compose.sh
